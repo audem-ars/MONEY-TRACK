@@ -1,0 +1,207 @@
+/* MONEY_TRACK - Enhanced Table Component Styles */
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+  background-color: var(--color-background);
+  position: relative;
+  border: 1px solid var(--color-border-light);
+  transition: all var(--transition-normal) var(--transition-ease);
+}
+
+.table-container:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.875rem;
+  table-layout: auto;
+}
+
+/* Header styling */
+.data-table thead {
+  background: var(--gradient-primary);
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.data-table th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: var(--font-weight-semibold);
+  border-bottom: none;
+  white-space: nowrap;
+  letter-spacing: 0.025em;
+  position: relative;
+  transition: background-color var(--transition-fast) var(--transition-ease);
+}
+
+/* Add subtle divider between header cells */
+.data-table th:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 20%;
+  height: 60%;
+  width: 1px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Add sort icons */
+.data-table th.sortable {
+  cursor: pointer;
+}
+
+.data-table th.sortable::before,
+.data-table th.sortable::after {
+  content: '';
+  position: absolute;
+  right: 0.5rem;
+  width: 0;
+  height: 0;
+  opacity: 0.3;
+  transition: opacity var(--transition-fast) var(--transition-ease);
+}
+
+.data-table th.sortable::before {
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-bottom: 4px solid white;
+  top: calc(50% - 6px);
+}
+
+.data-table th.sortable::after {
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid white;
+  top: calc(50% + 2px);
+}
+
+.data-table th.sortable:hover::before,
+.data-table th.sortable:hover::after {
+  opacity: 1;
+}
+
+.data-table th.sortable.asc::before {
+  opacity: 1;
+}
+
+.data-table th.sortable.desc::after {
+  opacity: 1;
+}
+
+/* Row styling */
+.data-table tbody tr {
+  background-color: var(--color-background);
+  transition: all var(--transition-fast) var(--transition-ease);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.data-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.data-table tbody tr:hover {
+  background-color: var(--color-background-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  z-index: 5;
+  position: relative;
+}
+
+.data-table td {
+  padding: 1rem;
+  border-bottom: none;
+  color: var(--color-text);
+  transition: all var(--transition-fast) var(--transition-ease);
+}
+
+/* Clickable rows */
+.data-table tr.clickable {
+  cursor: pointer;
+}
+
+.data-table tr.clickable:hover {
+  background-color: var(--color-primary-transparent);
+}
+
+/* Zebra striping */
+.data-table.striped tbody tr:nth-child(odd) {
+  background-color: var(--color-background-secondary);
+}
+
+.data-table.striped tbody tr:nth-child(odd):hover {
+  background-color: var(--color-background-hover);
+}
+
+/* Empty table state */
+.table-empty {
+  padding: 3rem 2rem;
+  text-align: center;
+  color: var(--color-text-muted);
+  background-color: var(--color-background-secondary);
+  border-radius: var(--border-radius-lg);
+  font-style: italic;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 10rem;
+}
+
+.table-empty::before {
+  content: '📊';
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* Cell types */
+.cell-numeric {
+  text-align: right;
+  font-family: var(--font-family-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.cell-action {
+  text-align: center;
+}
+
+.cell-status {
+  text-align: center;
+}
+
+/* Cell with pill style */
+.cell-pill {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--border-radius-full);
+  font-size: 0.75rem;
+  font-weight: var(--font-weight-medium);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .data-table th,
+  .data-table td {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.8rem;
+  }
+  
+  /* Allow text wrapping on mobile */
+  .data-table th {
+    white-space: normal;
+  }
+  
+  /* Hide less important columns on small screens */
+  .data-table .hide-mobile {
+    display: none;
+  }
+}

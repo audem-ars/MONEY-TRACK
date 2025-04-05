@@ -1,0 +1,179 @@
+/* MONEY_TRACK - Enhanced Card Component Styles */
+
+.card {
+  background-color: var(--color-background);
+  border-radius: var(--border-radius-xl);
+  box-shadow: var(--shadow-lg);
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+  position: relative;
+  transition: all var(--transition-normal) var(--transition-ease);
+  border: 1px solid var(--color-border-light);
+  z-index: 1;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-xl);
+  transform: translateY(-4px);
+}
+
+/* Glass morphism effect */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  z-index: -1;
+  border-radius: var(--border-radius-xl);
+  opacity: 0.5;
+}
+
+:root.dark .card::before {
+  background: linear-gradient(
+    135deg,
+    rgba(30, 41, 59, 0.8) 0%,
+    rgba(17, 24, 39, 0.6) 100%
+  );
+}
+
+.card-clickable {
+  cursor: pointer;
+}
+
+.card-clickable:hover {
+  box-shadow: var(--shadow-glow);
+}
+
+.card-header {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--color-border-light);
+  background-color: rgba(var(--color-background-rgb), 0.7);
+  backdrop-filter: blur(4px);
+  position: relative;
+}
+
+.card-title {
+  margin: 0;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-dark);
+  display: flex;
+  align-items: center;
+}
+
+.card-title::before {
+  content: '';
+  display: inline-block;
+  width: 0.5rem;
+  height: 1.25rem;
+  background: var(--gradient-blue-purple);
+  border-radius: var(--border-radius-sm);
+  margin-right: 0.75rem;
+}
+
+.card-subtitle {
+  margin-top: 0.25rem;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.card-content {
+  padding: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.card-footer {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--color-border-light);
+  background-color: var(--color-background-secondary);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Card variations with accent borders */
+.card-primary {
+  border-top: 4px solid var(--color-primary);
+}
+
+.card-secondary {
+  border-top: 4px solid var(--color-secondary);
+}
+
+.card-tertiary {
+  border-top: 4px solid var(--color-tertiary);
+}
+
+.card-success {
+  border-top: 4px solid var(--color-success);
+}
+
+.card-warning {
+  border-top: 4px solid var(--color-warning);
+}
+
+.card-danger {
+  border-top: 4px solid var(--color-error);
+}
+
+/* Card with gradient border */
+.card-gradient {
+  position: relative;
+  padding: 1px; /* Create space for gradient border */
+  background-clip: padding-box;
+}
+
+.card-gradient::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: var(--border-radius-xl);
+  padding: 1px; /* Border width */
+  background: var(--gradient-blue-purple);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.card-gradient:hover::before {
+  background: var(--gradient-blue-pink);
+}
+
+/* Compact card */
+.card-compact .card-content {
+  padding: 1rem;
+}
+
+/* Card with no padding */
+.card-no-padding .card-content {
+  padding: 0;
+}
+
+/* Card with hover animation */
+.card-animate {
+  transition: all var(--transition-normal) var(--transition-ease);
+}
+
+.card-animate:hover {
+  transform: translateY(-8px);
+}
+
+/* Media queries */
+@media (max-width: 768px) {
+  .card-header, .card-content, .card-footer {
+    padding: 1rem;
+  }
+}

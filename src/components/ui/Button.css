@@ -1,0 +1,218 @@
+/* MONEY_TRACK - Enhanced Button Component Styles */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1.25rem;
+  height: 2.5rem;
+  border-radius: var(--border-radius-md);
+  font-size: 0.9rem;
+  font-weight: var(--font-weight-semibold);
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-normal) var(--transition-ease);
+  white-space: nowrap;
+  user-select: none;
+  outline: none;
+  border: none;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Button hover and focus effects */
+.button:hover {
+  transform: translateY(-2px);
+}
+
+.button:focus {
+  box-shadow: 0 0 0 2px var(--color-background), 0 0 0 4px var(--color-primary-transparent);
+}
+
+.button:active {
+  transform: translateY(0);
+}
+
+/* Primary button variant with gradient */
+.button-primary {
+  background: var(--gradient-primary);
+  color: white;
+  box-shadow: 0 4px 6px rgba(58, 134, 255, 0.3);
+}
+
+.button-primary:hover {
+  box-shadow: 0 6px 8px rgba(58, 134, 255, 0.4);
+}
+
+.button-primary:active {
+  box-shadow: 0 2px 4px rgba(58, 134, 255, 0.2);
+}
+
+/* Secondary button variant */
+.button-secondary {
+  background-color: var(--color-background);
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+}
+
+.button-secondary:hover {
+  background-color: var(--color-primary-light);
+  color: white;
+  border-color: var(--color-primary-light);
+}
+
+/* Tertiary button variant (ghost-like) */
+.button-tertiary {
+  background-color: transparent;
+  color: var(--color-text);
+  border: 1px solid transparent;
+}
+
+.button-tertiary:hover {
+  background-color: var(--color-background-hover);
+  color: var(--color-primary);
+}
+
+/* Danger button variant */
+.button-danger {
+  background: var(--gradient-error);
+  color: white;
+  box-shadow: 0 4px 6px rgba(239, 68, 68, 0.3);
+}
+
+.button-danger:hover {
+  box-shadow: 0 6px 8px rgba(239, 68, 68, 0.4);
+}
+
+/* Success button variant */
+.button-success {
+  background: var(--gradient-success);
+  color: white;
+  box-shadow: 0 4px 6px rgba(16, 185, 129, 0.3);
+}
+
+.button-success:hover {
+  box-shadow: 0 6px 8px rgba(16, 185, 129, 0.4);
+}
+
+/* Button states */
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Button sizes */
+.button-small {
+  height: 2rem;
+  padding: 0 0.75rem;
+  font-size: 0.8rem;
+}
+
+.button-large {
+  height: 3rem;
+  padding: 0 1.5rem;
+  font-size: 1rem;
+}
+
+/* Button with icon */
+.button-icon {
+  margin-right: 0.5rem;
+}
+
+.button-icon-right {
+  margin-left: 0.5rem;
+  margin-right: 0;
+}
+
+.button-icon-only {
+  width: 2.5rem;
+  padding: 0;
+  border-radius: 50%;
+}
+
+.button-icon-only.button-small {
+  width: 2rem;
+}
+
+.button-icon-only.button-large {
+  width: 3rem;
+}
+
+/* Full width button */
+.button-full {
+  width: 100%;
+}
+
+/* Ripple effect */
+.button::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%, -50%);
+  transform-origin: 50% 50%;
+}
+
+.button:focus:not(:active)::after {
+  animation: ripple 0.6s ease-out;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 0.5;
+  }
+  20% {
+    transform: scale(25, 25);
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(40, 40);
+  }
+}
+
+/* Loading state */
+.button-loading {
+  position: relative;
+  color: transparent;
+}
+
+.button-loading::after {
+  content: "";
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+  top: 50%;
+  left: 50%;
+  margin-top: -0.5rem;
+  margin-left: -0.5rem;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-top-color: white;
+  animation: button-loading-spinner 0.8s linear infinite;
+  z-index: 10;
+}
+
+@keyframes button-loading-spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Dark mode adjustments */
+:root.dark .button-secondary {
+  border-color: var(--color-primary-light);
+}
+
+:root.dark .button-tertiary:hover {
+  background-color: var(--color-background-hover);
+}

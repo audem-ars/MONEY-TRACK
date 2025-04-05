@@ -1,0 +1,134 @@
+/* MONEY_TRACK - Enhanced Select Component Styles */
+
+.select-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.select-label {
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text);
+  transition: color var(--transition-normal) var(--transition-ease);
+}
+
+.select-element {
+  height: 2.5rem;
+  padding: 0 1rem;
+  padding-right: 2.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-size: 0.95rem;
+  transition: all var(--transition-normal) var(--transition-ease);
+  appearance: none;
+  cursor: pointer;
+  /* Custom dropdown arrow using SVG */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1rem;
+}
+
+/* Hover and focus states */
+.select-element:hover {
+  border-color: var(--color-primary-light);
+  box-shadow: 0 0 0 3px var(--color-primary-transparent);
+}
+
+.select-element:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-transparent);
+}
+
+/* When select is focused, change label color */
+.select-container:focus-within .select-label {
+  color: var(--color-primary);
+}
+
+/* Disabled state */
+.select-element:disabled {
+  background-color: var(--color-background-disabled);
+  color: var(--color-text-muted);
+  cursor: not-allowed;
+  border-color: var(--color-border);
+  opacity: 0.7;
+}
+
+/* Custom styling for options */
+.select-element option {
+  padding: 0.75rem 1rem;
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+/* Required indicator */
+.required-indicator {
+  color: var(--color-error);
+  margin-left: 0.25rem;
+}
+
+/* Create a floating menu-like appearance for the dropdown */
+/* This works with modern browsers, but older ones will fallback gracefully */
+@supports ((-webkit-appearance: none) or (-moz-appearance: none) or (appearance: none)) {
+  /* Target browsers that support the appearance property */
+  select::-ms-expand {
+    display: none;
+  }
+  
+  /* Style the select element */
+  .select-element:focus {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
+
+/* Custom dropdown styles for Webkit browsers */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  select {
+    text-indent: 0.01px;
+    text-overflow: '';
+  }
+}
+
+/* Dark mode adjustments */
+:root.dark .select-element {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%239CA3AF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+}
+
+:root.dark .select-element option {
+  background-color: var(--color-background-secondary);
+}
+
+/* Enhanced hover and animations */
+.select-element {
+  transition: all var(--transition-normal) var(--transition-ease);
+}
+
+.select-element:hover {
+  transform: translateY(-2px);
+}
+
+/* Dropdown menu animations */
+@keyframes dropdownAppear {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .select-element {
+    height: 2.75rem; /* Slightly larger touch target for mobile */
+  }
+}
